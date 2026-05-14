@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Chatbot</title>
+    <style>
+        body {
+            text-align: center; /* center everything */
+            font-family: Arial, sans-serif;
+            background-color: lightblue;
+        }
+        #chatbox {
+            width: 300px;
+            height: 250px;
+            border: 1px solid black;
+            padding: 10px;
+            overflow: auto;
+            margin: 0 auto; /* center horizontally */
+            background-color: lightcoral; /* light background color */
+        }
+        #button{
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Customer Support Chatbot</h2>
+
+    <div id="chatbox">
+        <p>
+            <b>Bot:</b>
+            Hello! You can type:
+            hello, doctor, appointment, emergency, contact, bye
+        </p>
+    </div>
+
+    <br>
+
+    <input type="text" id="userInput" placeholder="Type message">
+    <button id="button" onclick="reply()">Send</button>
+
+    <script>
+        function reply() {
+            var input = document.getElementById("userInput").value.toLowerCase();
+            var chatbox = document.getElementById("chatbox");
+
+            chatbox.innerHTML += "<p><b>You:</b> " + input + "</p>";
+
+            var response = "";
+
+            if (input == "hello" || input == "hi") {
+                response = "Hello! How can I help you?";
+            } else if (input == "doctor") {
+                response = "Doctors are available from 10 AM to 5 PM";
+            } else if (input == "appointment") {
+                response = "Appointments can be booked at reception";
+            } else if (input == "emergency") {
+                response = "Emergency ward is open 24 hours";
+            } else if (input == "contact") {
+                response = "Call hospital at 9876543210";
+            } else if (input == "bye") {
+                response = "Take care and stay healthy";
+            } else {
+                response = "Sorry, I did not understand";
+            }
+
+            chatbox.innerHTML += "<p><b>Bot:</b> " + response + "</p>";
+            document.getElementById("userInput").value = "";
+            chatbox.scrollTop = chatbox.scrollHeight; // auto-scroll
+        }
+    </script>
+
+</body>
+</html>
